@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Bai Tap 01</string>
+    <string name="register">New user? <u>Resigter here</u>.</string>
 </resources>
