@@ -1,18 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#009688"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--START top region-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="#005E55">
+        <TextView
+            android:id="@+id/txtChooseService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="Chọn dịch vụ"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp" />
+        <Button
+            android:id="@+id/btnExitt"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#FFFFFF"
+            android:text="THOÁT"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+    <!--END top region-->
+
+    <!--START middle region-->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:stretchColumns="*" >
+        <TableRow>
+            <LinearLayout
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/washing_machine" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/hotel" />
+
+        </TableRow>
+    </TableLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/fastfood" />
+
+</LinearLayout>
