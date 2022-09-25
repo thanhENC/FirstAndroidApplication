@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BC4239"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="40dp">
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_marginTop="50dp"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:layout_gravity="center"
+            android:src="@drawable/ava" />
+
+        <!--START input email address -->
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Email:"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="#FFFFFF"
+            android:hint="Type your Email Address"
+            android:inputType="textEmailAddress" />
+        <!--END input email address -->
+
+        <!--START input Password -->
+        <TextView
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Password:"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="#FFFFFF"
+            android:hint="Type your Password"
+            android:inputType="textPassword" />
+        <!--END input Password -->
+
+        <!--START button Login -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#FFFFFF"
+            android:textSize="20sp"
+            android:text="LOGIN"
+            android:textColor="#000000"
+            android:paddingHorizontal="25dp"/>
+        <!--END button Login -->
+
+        <!--START Register link-->
+        <TextView
+            android:id="@+id/txtRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="@string/register"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+        <!--END Register link-->
+
+
+    </LinearLayout>
+</LinearLayout>
