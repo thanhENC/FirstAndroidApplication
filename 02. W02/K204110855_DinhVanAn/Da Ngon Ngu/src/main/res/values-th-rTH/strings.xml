@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bai Tap 01</string>
+    <string name="register">ผู้ใช้ใหม่? <u>ลงทะเบียนที่นี่</u>.</string>
+    <string name="email">อีเมล:</string>
+    <string name="type_email">พิมพ์ที่อยู่อีเมลของคุณ</string>
+    <string name="password">รหัสผ่าน:</string>
+    <string name="type_password">พิมพ์รหัสผ่านของคุณ</string>
+    <string name="login">เข้าสู่ระบบ</string>
+</resources>

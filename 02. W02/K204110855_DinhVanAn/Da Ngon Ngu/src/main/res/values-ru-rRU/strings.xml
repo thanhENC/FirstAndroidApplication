@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bai Tap 01</string>
+    <string name="register">Новый пользователь? <u>Зарегистрируйтесь здесь</u>.</string>
+    <string name="email">Эл. адрес:</string>
+    <string name="type_email">Введите свой адрес электронной почты</string>
+    <string name="password">Пароль:</string>
+    <string name="type_password">Введите свой пароль</string>
+    <string name="login">АВТОРИЗОВАТЬСЯ</string>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_onclick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Onclick Xml"
+        android:textSize="24sp"
+        android:backgroundTint="#009688"
+        android:onClick="showToast"/>
+    <Button
+        android:id="@+id/btn_Anonymous"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Anonymous"
+        android:textSize="24sp"
+        android:backgroundTint="#F44336"
+        android:onClick="showToast"/>
+    <Button
+        android:id="@+id/btn_VariableListener1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Variable Listener 1"
+        android:textSize="24sp"
+        android:backgroundTint="#F44336"
+        android:onClick="showToast"/>
+    <Button
+        android:id="@+id/btn_VariableListener2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Variable Listener 2"
+        android:textSize="24sp"
+        android:backgroundTint="#F44336"
+        android:onClick="showToast"/>
+
+</LinearLayout>
