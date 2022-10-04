@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Bai Tap 01</string>
     <string name="register">New user? <u>Resigter here</u>.</string>
+    <string name="email">Email:</string>
+    <string name="type_email">Type your Email Address</string>
+    <string name="password">Password:</string>
+    <string name="type_password">Type your Password</string>
+    <string name="login">LOGIN</string>
 </resources>
