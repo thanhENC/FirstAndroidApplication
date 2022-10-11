@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HandsOn11102022</string>
+    <string-array name="food_list">
+        <item>Bún đậu</item>
+        <item>Lẩu chay</item>
+        <item>Mì cay</item>
+        <item>Bún ốc</item>
+        <item>Bún thái</item>
+        <item>Bánh xèo</item>
+        <item>Nem nướng</item>
+        <item>Bánh canh</item>
+        <item>Bò né</item>
+        <item>Lẩu cá</item>
+    </string-array>
+</resources>
