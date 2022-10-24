@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GridViewPractice</string>
+    <string-array name="product_list">
+        <item>Máy ảnh</item>
+        <item>Laptop</item>
+        <item>Điện thoại</item>
+        <item>Sạc dự phòng</item>
+        <item>Ổ cứng di động</item>
+    </string-array>
+</resources>
