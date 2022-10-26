@@ -2,11 +2,11 @@ package com.k204111813.models;
 
 public class Restaurant {
     String name;
-    String photo;
+    int photo;
     Double rattingValue, rattingCount;
     String address;
 //Constructor
-    public Restaurant(String name, String photo, Double rattingValue, Double rattingCount, String address) {
+    public Restaurant(String name, int photo, Double rattingValue, Double rattingCount, String address) {
         this.name = name;
         this.photo = photo;
         this.rattingValue = rattingValue;
@@ -24,11 +24,11 @@ public class Restaurant {
         this.name = name;
     }
 
-    public String getPhoto() {
+    public int getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(int photo) {
         this.photo = photo;
     }
 

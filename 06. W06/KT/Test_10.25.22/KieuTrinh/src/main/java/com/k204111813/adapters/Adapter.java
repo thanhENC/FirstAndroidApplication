@@ -62,7 +62,7 @@ public class Adapter extends BaseAdapter {
         }
         //Binding data
         Restaurant res = restaurants.get(i);
-        holder.imv_Photo.setImageResource(activity.getResources().getIdentifier(res.getPhoto(),"drawable",activity.getPackageName()));
+        holder.imv_Photo.setImageResource(res.getPhoto());
         holder.txt_Name.setText(res.getName());
         holder.txt_RattingValue.setText(String.valueOf(res.getRattingValue()));
         holder.txt_RattingCount.setText(String.valueOf(res.getRattingCount()));

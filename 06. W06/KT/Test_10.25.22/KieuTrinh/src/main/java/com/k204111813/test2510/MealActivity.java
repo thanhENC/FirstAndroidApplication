@@ -35,11 +35,11 @@ public class MealActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_meal);
         binding = ActivityMealBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getData();
+        getMealIntent();
         addEvent();
     }
 
-    private void getData() {
+    private void getMealIntent() {
         Intent intent = getIntent();
         String meal = intent.getStringExtra("meal");
         int index = meal.equals("breakfast") ? 0 : 1;
@@ -55,7 +55,7 @@ public class MealActivity extends AppCompatActivity {
                 Dialog dialog = new Dialog(MealActivity.this);
                 dialog.setContentView(R.layout.dialog);
                 ImageView img = dialog.findViewById(R.id.imv_dialogPhoto);
-                img.setImageResource(MealActivity.this.getResources().getIdentifier(restaurant.getPhoto(),"drawable",MealActivity.this.getPackageName()));
+                img.setImageResource(restaurant.getPhoto());
                 TextView txtName = dialog.findViewById(R.id.txt_dialogName);
                 txtName.setText(restaurant.getName());
                 TextView txtAddress = dialog.findViewById(R.id.txt_dialogAddress);
@@ -82,7 +82,8 @@ public class MealActivity extends AppCompatActivity {
             for(int i = 0; i < list_restaurant.length(); i++){
                 JSONObject restaurant = list_restaurant.getJSONObject(i);
                 String name = restaurant.getString("name");
-                String photo = restaurant.getString("photo");
+                String s_photo = restaurant.getString("photo");
+                int photo = MealActivity.this.getResources().getIdentifier(s_photo,"drawable",MealActivity.this.getPackageName());
                 Double rattingValue = restaurant.getDouble("ratingValue");
                 Double rattingCount = restaurant.getDouble("ratingCount");
                 String address = restaurant.getString("address");
