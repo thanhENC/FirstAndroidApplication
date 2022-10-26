@@ -23,5 +23,29 @@
         android:backgroundTint="#00BCD4"
         android:textSize="24sp" />
 
+    <EditText
+        android:id="@+id/edt_Numb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter a number"
+        android:textSize="26sp"
+        android:backgroundTint="#FF9800"
+        android:layout_marginTop="50dp"/>
+
+    <Button
+        android:id="@+id/btn_OpenActivity_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Open Activity 3"
+        android:backgroundTint="#FF9800"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txt_Result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:text="00"
+        android:gravity="center" />
 
 </LinearLayout>
