@@ -1,5 +1,7 @@
 package com.k204110855.activity_intent;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,7 +15,9 @@ import com.k204110855.models.Product;
 public class IntentEx extends AppCompatActivity {
 
     ActivityIntentExBinding binding;
-    public static final int REQUEST_CODE = 1; //Type psf and Enter
+    //public static final int REQUEST_CODE = 1; //Type psf and Enter
+
+    ActivityResultLauncher<Intent> laucher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,14 @@ public class IntentEx extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         addEvents();
+
+        //result la bien intent gui tu man hinh khac
+        laucher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if(result.getResultCode() == RESULT_OK && result.getData() != null){
+                int pow = result.getData().getIntExtra("pow", 0);
+                binding.txtResult.setText(String.valueOf(pow));
+            }
+        });
     }
 
     private void addEvents() {
@@ -61,7 +73,7 @@ public class IntentEx extends AppCompatActivity {
 
                 //bundle.putParcelable(); parcelable --> Tối ưu hơn khi gửi 1 object
 
-                startActivity(intent);
+                //startActivity(intent);
             }
         });
         binding.btnOpenActivity3.setOnClickListener(new View.OnClickListener() {
@@ -71,16 +83,22 @@ public class IntentEx extends AppCompatActivity {
                 intent.putExtra("numb", binding.edtNumb.getText().toString());
 
                 //startActivity(intent);
-                startActivityForResult(intent, REQUEST_CODE);
+
+                //Method 1: using startActivityForResult
+                //startActivityForResult(intent, REQUEST_CODE);
+
+                //Method 2: using ActivityResultLauncher //Uu tien su dung
+                laucher.launch(intent);
             }
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null){
-            int pow = data.get
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null){
+//            int pow = data.getIntentExtra("pow", 0);
+//            binding.txtResult.setText(String.valueOf(pow));
+//        }
+//    }
 }
