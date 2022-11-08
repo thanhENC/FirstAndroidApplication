@@ -1,10 +1,14 @@
 package com.k204110855.sqllite_ex;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -22,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<Product> adapter;
     ArrayList<Product> products;
 
-    SQLiteDatabase db;
+    public static SQLiteDatabase db;
 
 
     @Override
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Create database
         copyBD();
-        loadData();
+        //loadData();
     }
 
     private void loadData() {
@@ -46,9 +50,14 @@ public class MainActivity extends AppCompatActivity {
         //products.add(new Product(2, "Tiger", 20000));
 
         db = openOrCreateDatabase(Utils.DB_NAME, MODE_PRIVATE, null);
-        Cursor c = db.rawQuery("SELECT * FROM " + Utils.TBL_NAME, null); // => Trả về con trỏ Cursor
 
+        //Cách 1: rawQuery
+        //Cursor c = db.rawQuery("SELECT * FROM " + Utils.TBL_NAME, null); // => Trả về con trỏ Cursor
         //Cursor c = db.rawQuery("SELECT * FROM " + Utils.TBL_NAME + " WHERE " + Utils.COL_ID + " =? OR " + Utils.COL_ID + " =? ", new String[]{"2", "4"}); // => Trả về con trỏ Cursor
+
+        //Cách 2: query
+        //Cursor c = db.query(Utils.TBL_NAME, null, Utils.COL_PRICE + ">=?", new String[]{"16000"}, null, null, null);
+        Cursor c = db.query(Utils.TBL_NAME, null, null, null, null, null, null);
 
         // Lặp qua từng dòng dữ liệu trong db và thêm vào ArrayList
         while (c.moveToNext()) {
@@ -95,5 +104,27 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        loadData();
+        super.onResume();
+    }
+
+    //==========================MENU==========================
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.option_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.mn_Add){
+            Intent intent = new Intent(MainActivity.this, AddActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
