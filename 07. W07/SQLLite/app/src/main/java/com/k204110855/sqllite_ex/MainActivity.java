@@ -2,6 +2,8 @@ package com.k204110855.sqllite_ex;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     ArrayAdapter<Product> adapter;
     ArrayList<Product> products;
+
+    SQLiteDatabase db;
 
 
     @Override
@@ -38,8 +42,19 @@ public class MainActivity extends AppCompatActivity {
         products = new ArrayList<>();
 
         //Init sample data
-        products.add(new Product(1, "Heineken", 19000));
-        products.add(new Product(2, "Tiger", 20000));
+        //products.add(new Product(1, "Heineken", 19000));
+        //products.add(new Product(2, "Tiger", 20000));
+
+        db = openOrCreateDatabase(Utils.DB_NAME, MODE_PRIVATE, null);
+        Cursor c = db.rawQuery("SELECT * FROM " + Utils.TBL_NAME, null); // => Trả về con trỏ Cursor
+
+        //Cursor c = db.rawQuery("SELECT * FROM " + Utils.TBL_NAME + " WHERE " + Utils.COL_ID + " =? OR " + Utils.COL_ID + " =? ", new String[]{"2", "4"}); // => Trả về con trỏ Cursor
+
+        // Lặp qua từng dòng dữ liệu trong db và thêm vào ArrayList
+        while (c.moveToNext()) {
+            products.add(new Product(c.getInt(0), c.getString(1), c.getDouble(2)));
+        }
+        c.close(); //Đọc xong đóng con trỏ lại để giải phóng bộ nhớ
 
         adapter = new ArrayAdapter<Product>(MainActivity.this, android.R.layout.simple_list_item_1, products);
 
