@@ -3,19 +3,22 @@ package com.k204110855.sqllite_ex;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.k204110855.models.Product;
 import com.k204110855.sqllite_ex.databinding.ActivityMainBinding;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
-
+    ArrayAdapter<Product> adapter;
+    ArrayList<Product> products;
 
 
     @Override
@@ -28,6 +31,19 @@ public class MainActivity extends AppCompatActivity {
 
         // Create database
         copyBD();
+        loadData();
+    }
+
+    private void loadData() {
+        products = new ArrayList<>();
+
+        //Init sample data
+        products.add(new Product(1, "Heineken", 19000));
+        products.add(new Product(2, "Tiger", 20000));
+
+        adapter = new ArrayAdapter<Product>(MainActivity.this, android.R.layout.simple_list_item_1, products);
+
+        binding.lvProduct.setAdapter(adapter);
     }
 
     private void copyBD() {
