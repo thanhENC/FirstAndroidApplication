@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20sp"
-    tools:context=".AddActivity">
+    tools:context=".EditActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ADD PRODUCT"
+        android:text="EDIT PRODUCT"
         android:gravity="center"
         android:textSize="26sp" />
 
@@ -39,10 +39,10 @@
         android:gravity="end">
 
         <Button
-            android:id="@+id/btn_Add"
+            android:id="@+id/btn_Edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
+            android:text="Edit"
             android:textSize="22sp"
             android:backgroundTint="#009688" />
 

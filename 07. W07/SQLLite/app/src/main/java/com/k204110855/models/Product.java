@@ -1,6 +1,8 @@
 package com.k204110855.models;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     int productId;
     String productName;
     double productPrice;

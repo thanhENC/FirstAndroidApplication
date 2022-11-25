@@ -3,12 +3,17 @@ package com.k204110855.sqllite_ex;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static SQLiteDatabase db;
 
+    Product selectedProduct = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,19 @@ public class MainActivity extends AppCompatActivity {
         // Create database
         copyBD();
         //loadData();
+        addEvents();
+        registerForContextMenu(binding.lvProduct);
+
+    }
+
+    private void addEvents() {
+        binding.lvProduct.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedProduct = products.get(i);
+                return false;
+            }
+        });
     }
 
     private void loadData() {
@@ -126,5 +145,71 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //==========================CONTEXT MENU==========================
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.context_menu, menu);
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.mn_edit){
+            Intent intent = new Intent(MainActivity.this, EditActivity.class);
+
+            //Attach data
+            if(selectedProduct != null){
+                intent.putExtra("productInf", selectedProduct);
+                startActivity(intent);
+            }
+        }
+        else if(item.getItemId() == R.id.mn_delete){
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Xác nhận xóa sp!");
+            builder.setMessage("Bạn có chắc chắn muốn xóa sp " + selectedProduct.getProductName() + " không?");
+            builder.setIcon(android.R.drawable.ic_delete);
+
+            builder.setPositiveButton("Anh xóa iem đi 😏", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    int numbOfRows = db.delete(Utils.TBL_NAME, Utils.COL_ID + "=?", new String[]{ String.valueOf(selectedProduct.getProductId())});
+                    if(numbOfRows > 0){
+                        Toast.makeText(MainActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                        loadData();
+                    }
+                    else {
+                        Toast.makeText(MainActivity.this, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                    loadData();
+                }
+            });
+
+            builder.setNegativeButton("Tha iem", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Toast.makeText(MainActivity.this, "Không xóa nữa", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            builder.create().show();
+
+//            if(selectedProduct != null){
+//                int numbOfRows = db.delete(Utils.TBL_NAME, Utils.COL_ID + "=?", new String[]{ String.valueOf(selectedProduct.getProductId())});
+//
+//                if(numbOfRows > 0){
+//                    Toast.makeText(this, "Delete success", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    Toast.makeText(this, "Delete failed", Toast.LENGTH_SHORT).show();
+//                }
+//                loadData();
+//            }
+        }
+
+        //intent.putExtra()
+
+        return super.onContextItemSelected(item);
     }
 }
