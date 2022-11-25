@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:weightSum="10">
+
+    <TextView
+        android:id="@+id/txt_ProductInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Product Info ..."
+        android:textSize="26sp"
+        android:layout_weight="9"/>
+
+    <ImageView
+        android:id="@+id/imv_Edit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_edit_24"
+        android:layout_weight="0.5" />
+
+    <ImageView
+        android:id="@+id/imv_Delete"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_delete_24"
+        android:layout_weight="0.5"/>
+
+
+
+</LinearLayout>
