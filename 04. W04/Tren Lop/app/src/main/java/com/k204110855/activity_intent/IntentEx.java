@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 
 import com.k204110855.activity_intent.databinding.ActivityIntentExBinding;
@@ -59,7 +60,7 @@ public class IntentEx extends AppCompatActivity {
 //                intent.putExtra("say", "Hello");
 
                 Bundle bundle = new Bundle();
-                bundle.putInt("numb", 7);
+                bundle.putInt("numb", 9);
                 bundle.putFloat("grades", 7.9f);
                 bundle.putString("say", "Welcome");
                 bundle.putBoolean("checked", true);
@@ -70,10 +71,10 @@ public class IntentEx extends AppCompatActivity {
                 Product p = new Product("Heineken", 19000);
                 bundle.putSerializable("product_inf", p); //-> gửi tất cả mọi thứ, nhưng k tối ưu
 
-
+                //Sending object
                 //bundle.putParcelable(); parcelable --> Tối ưu hơn khi gửi 1 object
 
-                //startActivity(intent);
+                startActivity(intent);
             }
         });
         binding.btnOpenActivity3.setOnClickListener(new View.OnClickListener() {
