@@ -144,6 +144,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, AddActivity.class);
             startActivity(intent);
         }
+        else if(item.getItemId() == R.id.mn_About){
+            finish();
+        }
         return super.onOptionsItemSelected(item);
     }
 

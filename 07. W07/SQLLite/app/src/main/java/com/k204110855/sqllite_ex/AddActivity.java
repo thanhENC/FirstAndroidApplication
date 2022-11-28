@@ -44,5 +44,12 @@ public class AddActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        binding.btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }
