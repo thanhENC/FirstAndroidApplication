@@ -75,6 +75,7 @@ public class ProductAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 //Delete product
+                activity.openDialogDelete(p);
             }
         });
 

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.k20411group03.adapters.ProductAdapter;
@@ -93,6 +94,40 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    public void openDialogDelete(Product p) {
+        Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.dialog_delete);
+
+        Button btnDelete, btnCancel;
+        TextView txtName, txtPrice;
+
+        btnDelete = dialog.findViewById(R.id.btn_Delete);
+        btnCancel = dialog.findViewById(R.id.btn_Cancel);
+        txtName = dialog.findViewById(R.id.txt_Name);
+        txtPrice = dialog.findViewById(R.id.txt_Price);
+
+        txtName.setText(p.getProductName());
+        txtPrice.setText(String.valueOf(p.getProductPrice()));
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.execSql("DELETE FROM " + DatabaseHelper.TBL_NAME + " WHERE " + DatabaseHelper.COL_ID + " = " + p.getProductId());
+                loadData();
+                dialog.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
     //================MENU=================
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -140,4 +175,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
