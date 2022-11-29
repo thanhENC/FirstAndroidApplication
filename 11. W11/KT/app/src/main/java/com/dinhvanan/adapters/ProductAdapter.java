@@ -71,19 +71,6 @@ public class ProductAdapter extends BaseAdapter {
         return view;
     }
 
-    private String formatPrice(int price){
-        String str = price + "";
-        int count = 0;
-        for(int i = str.length() - 1; i >= 0; i--){
-            count++;
-            if(count == 3){
-                str = str.substring(0, i) + "." + str.substring(i);
-                count = 0;
-            }
-        }
-        return str + " VND";
-    }
-
     public static class ViewHolder{
         ImageView imvEdit, imvDelete, imvProductImage;
         TextView txtProductName, txtProductBrand, txtProductPrice;

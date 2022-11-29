@@ -9,37 +9,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="ADD PRODUCT"
+        android:text="WARNING!"
         android:textSize="32sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/edt_Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name..."
+        android:text="Name..."
         android:textSize="24sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/edt_Brand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Brand..."
+        android:text="Brand..."
         android:textSize="24sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/edt_Price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Price..."
+        android:text="Price..."
         android:textSize="24sp" />
 
-    <EditText
-        android:id="@+id/edt_Image"
+    <ImageView
+        android:id="@+id/imv_Image"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Image (Em chưa làm được)"
-        android:textSize="24sp"
-        android:enabled="false"/>
+        android:hint="Bạn chắc chắn muốn xóa sản phẩm này?"
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,12 +52,12 @@
         android:gravity="end">
 
         <Button
-            android:id="@+id/btn_Add"
+            android:id="@+id/btn_Delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ADD"
+            android:text="DELETE"
             android:textSize="20sp"
-            android:backgroundTint="#4CAF50"
+            android:backgroundTint="#009688"
             android:layout_marginEnd="15dp"/>
 
         <Button
@@ -62,9 +66,8 @@
             android:layout_height="wrap_content"
             android:text="CANCEL"
             android:textSize="20sp"
-            android:backgroundTint="#FF5722"
+            android:backgroundTint="#F44336"
             android:layout_marginEnd="15dp"/>
 
     </LinearLayout>
-
 </LinearLayout>
