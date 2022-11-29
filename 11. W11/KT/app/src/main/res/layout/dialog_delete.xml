@@ -34,7 +34,7 @@
         android:textSize="24sp" />
 
     <ImageView
-        android:id="@+id/imv_Image"
+        android:id="@+id/imv_DelProductImage"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:layout_gravity="center"/>

@@ -62,20 +62,21 @@ public class MainActivity extends AppCompatActivity {
         Dialog dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.dialog_update);
 
-        EditText edtName, edtPrice, edtBrand, edtImage;
+        ImageView imvProduct;
+        EditText edtName, edtPrice, edtBrand;
         Button btnUpdate, btnCancel;
 
         edtName = dialog.findViewById(R.id.edt_Name);
         edtBrand = dialog.findViewById(R.id.edt_Brand);
         edtPrice = dialog.findViewById(R.id.edt_Price);
-        edtImage = dialog.findViewById(R.id.edt_Image);
+        imvProduct = dialog.findViewById(R.id.imv_UpdateProductImage);
         btnUpdate = dialog.findViewById(R.id.btn_Update);
         btnCancel = dialog.findViewById(R.id.btn_Cancel);
 
         edtName.setText(p.getProductName());
         edtBrand.setText(p.getBrand());
-        edtPrice.setText(String.valueOf(p.getPrice()));
-        edtImage.setText(String.valueOf(p.getImage()));
+        edtPrice.setText(String.valueOf((int)p.getPrice()));
+        imvProduct.setImageResource(p.getImage());
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 db.execSql("UPDATE " + DatabaseHelper.TBL_NAME + " SET " +
                         DatabaseHelper.COL_NAME + " = '" + edtName.getText().toString() + "', " +
                         DatabaseHelper.COL_BRAND + " = '" + edtBrand.getText().toString() + "', " +
-                        DatabaseHelper.COL_PRICE + " = " + edtPrice.getText().toString() + edtImage.getText().toString() +
+                        DatabaseHelper.COL_PRICE + " = " + edtPrice.getText().toString() + ", " + DatabaseHelper.COL_IMAGE + " = " + p.getImage() +
                         " WHERE " + DatabaseHelper.COL_ID + " = " + p.getProductId());
                 loadData();
                 dialog.dismiss();
@@ -98,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         dialog.show();
+
+        dialog.getWindow().setLayout(1000, 1500);
     }
 
     public void openDialogDelete(Product p) {
@@ -113,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         txtName = dialog.findViewById(R.id.txt_Name);
         txtPrice = dialog.findViewById(R.id.txt_Price);
         txtBrand = dialog.findViewById(R.id.txt_Brand);
-        imvProduct = dialog.findViewById(R.id.imv_ProductImage);
+        imvProduct = dialog.findViewById(R.id.imv_DelProductImage);
 
         txtName.setText(p.getProductName());
         txtBrand.setText(p.getBrand());
@@ -137,6 +140,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         dialog.show();
+
+        //fill dialog full screen
+        dialog.getWindow().setLayout(1000, 1500);
+
     }
 
     //MENU
