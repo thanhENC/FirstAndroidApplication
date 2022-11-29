@@ -75,13 +75,15 @@ public class MainActivity extends AppCompatActivity {
         edtName.setText(p.getProductName());
         edtBrand.setText(p.getBrand());
         edtPrice.setText(String.valueOf(p.getPrice()));
+        edtImage.setText(String.valueOf(p.getImage()));
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 db.execSql("UPDATE " + DatabaseHelper.TBL_NAME + " SET " +
                         DatabaseHelper.COL_NAME + " = '" + edtName.getText().toString() + "', " +
-                        DatabaseHelper.COL_PRICE + " = " + Double.parseDouble(edtPrice.getText().toString()) +
+                        DatabaseHelper.COL_BRAND + " = '" + edtBrand.getText().toString() + "', " +
+                        DatabaseHelper.COL_PRICE + " = " + edtPrice.getText().toString() + edtImage.getText().toString() +
                         " WHERE " + DatabaseHelper.COL_ID + " = " + p.getProductId());
                 loadData();
                 dialog.dismiss();

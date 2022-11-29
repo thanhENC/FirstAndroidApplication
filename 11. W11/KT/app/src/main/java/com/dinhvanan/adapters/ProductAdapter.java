@@ -65,7 +65,7 @@ public class ProductAdapter extends BaseAdapter {
         Product p = products.get(i);
         holder.txtProductName.setText(p.getProductName());
         holder.txtProductBrand.setText(p.getBrand());
-        holder.txtProductPrice.setText(formatPrice((int)p.getPrice()));
+        holder.txtProductPrice.setText(p.formatPrice(p.getPrice()));
         holder.imvProductImage.setImageResource(p.getImage());
 
         return view;
