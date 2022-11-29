@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dinhvanan.models.Product;
+import com.dinhvanan.test.MainActivity;
 import com.dinhvanan.test.R;
 import com.dinhvanan.test.databinding.ActivityMainBinding;
 
@@ -17,11 +18,11 @@ import java.util.List;
 
 public class ProductAdapter extends BaseAdapter {
 
-    Activity activity;
+    MainActivity activity;
     int item_layout;
     List<Product> products;
 
-    public ProductAdapter(Activity activity, int item_layout, List<Product> products) {
+    public ProductAdapter(MainActivity activity, int item_layout, List<Product> products) {
         this.activity = activity;
         this.item_layout = item_layout;
         this.products = products;
@@ -67,6 +68,13 @@ public class ProductAdapter extends BaseAdapter {
         holder.txtProductBrand.setText(p.getBrand());
         holder.txtProductPrice.setText(p.formatPrice(p.getPrice()));
         holder.imvProductImage.setImageResource(p.getImage());
+
+        holder.imvEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.openDialogUpdate(p);
+            }
+        });
 
         return view;
     }

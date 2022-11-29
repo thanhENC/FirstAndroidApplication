@@ -105,15 +105,20 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_delete);
 
         Button btnDelete, btnCancel;
-        TextView txtName, txtPrice;
+        TextView txtName, txtBrand, txtPrice;
+        ImageView imvProduct;
 
         btnDelete = dialog.findViewById(R.id.btn_Delete);
         btnCancel = dialog.findViewById(R.id.btn_Cancel);
         txtName = dialog.findViewById(R.id.txt_Name);
         txtPrice = dialog.findViewById(R.id.txt_Price);
+        txtBrand = dialog.findViewById(R.id.txt_Brand);
+        imvProduct = dialog.findViewById(R.id.imv_ProductImage);
 
         txtName.setText(p.getProductName());
-        txtPrice.setText(String.valueOf(p.getProductPrice()));
+        txtBrand.setText(p.getBrand());
+        txtPrice.setText(p.formatPrice(p.getPrice()));
+        imvProduct.setImageResource(p.getImage());
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,21 +154,27 @@ public class MainActivity extends AppCompatActivity {
             dialog.setContentView(R.layout.dialog_add);
             dialog.show();
 
-            EditText edtName, edtPrice;
+            EditText edtName, edtBrand, edtPrice, edtImage;
             Button btnAdd, btnCancel;
 
             edtName = dialog.findViewById(R.id.edt_Name);
+            edtBrand = dialog.findViewById(R.id.edt_Brand);
             edtPrice = dialog.findViewById(R.id.edt_Price);
+            edtImage = dialog.findViewById(R.id.edt_Image);
             btnAdd = dialog.findViewById(R.id.btn_Add);
             btnCancel = dialog.findViewById(R.id.btn_Cancel);
+
+            edtImage.setText(String.valueOf(R.drawable.macbookairm12020silver));
 
             btnAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     //Insert product info
-                    db.execSql("INSERT INTO " + DatabaseHelper.TBL_NAME + " VALUES(null, '"
-                            + edtName.getText().toString() + "', " //Chu y dau nhay don ' vao ten cua san pham
-                            + Double.parseDouble(edtPrice.getText().toString()) + ")");
+                    db.execSql("INSERT INTO " + DatabaseHelper.TBL_NAME + " VALUES (NULL, '" +
+                            edtName.getText().toString() + "', '" +
+                            edtBrand.getText().toString() + "', " +
+                            edtPrice.getText().toString() + ", " +
+                            edtImage.getText().toString() + ")");
                     loadData();
                     dialog.dismiss();
                 }
