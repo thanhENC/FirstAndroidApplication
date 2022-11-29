@@ -76,6 +76,13 @@ public class ProductAdapter extends BaseAdapter {
             }
         });
 
+        holder.imvDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.openDialogDelete(p);
+            }
+        });
+
         return view;
     }
 
